@@ -10,14 +10,13 @@ import weka.core.Instances;
 public class RemoveSpecifiedAuthors {
 	
 	/*
-	 * 
 	 * Remove authorToRemove from dataset
 	 * */
 	 public static void main(String[] args) throws Exception, IOException, InterruptedException {
 
 
 
-	    	String fileNameSRC = "/arffs/"+"filename";
+	    	String fileNameSRC = "arffs/"+"filename";
 	    	File arffFile1 = new File(fileNameSRC+".arff");
 	    	String fileNameDEST = fileNameSRC+"_subset.arff";
 	    	String authorToRemove ="className";

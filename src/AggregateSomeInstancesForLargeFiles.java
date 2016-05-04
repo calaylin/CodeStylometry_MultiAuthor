@@ -26,7 +26,7 @@ public class AggregateSomeInstancesForLargeFiles {
 		 	double setSize =10; //merge setSize instances into one instance
 	    	boolean order = true;//false for mixed aggregation, true for in order aggregation
 
-	    	String fileName = "/arffs/"+"";
+	    	String fileName = "arffs/"+"githubManySmallSnippets_minLOC5_minFiles90partial_subset";
 	    	File arffFile1 = new File(fileName+".arff");
 	    	String finalArff = null;
     	    double[] array = new double[2];
@@ -38,7 +38,7 @@ public class AggregateSomeInstancesForLargeFiles {
 			 }
 
 	    	if(order == true){
-	    		 finalArff = fileName+"_orderedMerged"+
+	    		 finalArff = fileName+"2_orderedMerged"+
 	    			    	setSize+"LargeInstancesTrainNormalized.arff";
 	    		 }	    
 	    	
@@ -79,7 +79,9 @@ public class AggregateSomeInstancesForLargeFiles {
 					
 					if(((instanceCounter-1)%setSize) == (setSize-1)){
 						for(int j=1; j< numFeatures; j++){
-							Util.writeFile(((array[j-1])/setSize)+",", finalArff, true);							
+							System.out.println("before arr");
+							Util.writeFile(((array[j-1])/setSize)+",", finalArff, true);	
+							System.out.println("after arr");
 							}	
 						Util.writeFile(arrayString[arrayString.length-1]+"\n", finalArff, true);
 		        	    array =new double[numFeatures-1];
