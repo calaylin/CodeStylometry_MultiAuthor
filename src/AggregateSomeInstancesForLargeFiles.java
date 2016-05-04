@@ -26,7 +26,7 @@ public class AggregateSomeInstancesForLargeFiles {
 		 	double setSize =10; //merge setSize instances into one instance
 	    	boolean order = true;//false for mixed aggregation, true for in order aggregation
 
-	    	String fileName = "githubManySmallSnippets_minLOC5_minFiles90partial_subset";
+	    	String fileName = "/arffs/"+"";
 	    	File arffFile1 = new File(fileName+".arff");
 	    	String finalArff = null;
     	    double[] array = new double[2];

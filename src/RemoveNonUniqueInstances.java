@@ -14,7 +14,7 @@ public class RemoveNonUniqueInstances {
 	 * */
 	 public static void main(String[] args) throws Exception, IOException, InterruptedException {	    	
 	    	
-		 	String fileNameSRC = "filename";	    	
+		 	String fileNameSRC = "/arffs/"+"filename";	    	
 	    	File arffFile1 = new File(fileNameSRC+".arff");
 			String finalArff = fileNameSRC+ "_noID_unique.arff";
 			String[] s_array;

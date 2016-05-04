@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class PredictionMargin{
 	public static void main(String[] args) throws Exception 
 	{
-		String predictionFile="gitAdditionsIG_noIDres.csv";
+		String predictionFile="/arffs/"+""+".csv";
 		BufferedReader reader = new BufferedReader(new FileReader(predictionFile));
     	BufferedWriter writer  = new BufferedWriter(new FileWriter(predictionFile+"err.arff"));
     	String [] arr;

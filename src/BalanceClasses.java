@@ -15,7 +15,7 @@ public class BalanceClasses {
 	 * */
 	 public static void main(String[] args) throws Exception, IOException, InterruptedException {
 
-		 	String arffSRC = "";
+		 	String arffSRC = "/arffs/"+"";
 	    	File arffFile1 = new File(arffSRC+".arff");
 			String finalArff = arffSRC+"_orderedClasses.arff";
 			int noClasses=49;

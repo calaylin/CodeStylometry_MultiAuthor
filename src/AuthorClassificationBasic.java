@@ -37,8 +37,8 @@ public class AuthorClassificationBasic {
 		String fileName  ="results.txt";
 		
 		
-		String arffFile ="15auths2TFIDF.arff";
-		String arffFileIG ="15auths2TFIDF_IG2.arff";
+		String arffFile ="/arffs/"+"";
+		String arffFileIG ="/arffs/"+"";
 
 		
 			  Util.writeFile(numberFiles+"FilesPerAuthor: \n",fileName, true);	

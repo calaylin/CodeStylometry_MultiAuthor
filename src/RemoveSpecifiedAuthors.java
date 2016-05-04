@@ -17,7 +17,7 @@ public class RemoveSpecifiedAuthors {
 
 
 
-	    	String fileNameSRC = "filename";
+	    	String fileNameSRC = "/arffs/"+"filename";
 	    	File arffFile1 = new File(fileNameSRC+".arff");
 	    	String fileNameDEST = fileNameSRC+"_subset.arff";
 	    	String authorToRemove ="className";

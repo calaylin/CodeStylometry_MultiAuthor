@@ -427,10 +427,10 @@ public class DatasetCreator
 		
 		public static void main(String[] args) throws Exception, IOException, InterruptedException 
 		{
-		String test_cpp_dir = "githubManySmallSnippets/";	
+		String test_cpp_dir = "";	
 		int LOC = 50 ;
 		int minFile = 2;
-		copyAuthorsWithLOCFileNumber(test_cpp_dir, "githubManySmallSnippets" + "_minLOC"+LOC + "_minFiles"+
+		copyAuthorsWithLOCFileNumber(test_cpp_dir, "" + "_minLOC"+LOC + "_minFiles"+
 		minFile+"/", LOC, minFile, true);
 
 		}

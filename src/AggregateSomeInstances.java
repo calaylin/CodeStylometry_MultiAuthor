@@ -28,7 +28,7 @@ public class AggregateSomeInstances {
 			int authors = 49; //number of classes in the dataset
 	    	boolean order = false;//false for mixed aggregation, true for in order aggregation
 
-	    	String fileName = "";
+	    	String fileName = "/arffs/"+"";
 	    	File arffFile1 = new File(fileName+".arff");
 	    	String finalArff = null;
 
