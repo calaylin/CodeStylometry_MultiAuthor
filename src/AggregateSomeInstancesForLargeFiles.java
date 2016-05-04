@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 import weka.core.Instances;
 import org.apache.commons.lang3.StringUtils;
@@ -26,7 +27,7 @@ public class AggregateSomeInstancesForLargeFiles {
 		 	double setSize =10; //merge setSize instances into one instance
 	    	boolean order = true;//false for mixed aggregation, true for in order aggregation
 
-	    	String fileName = "arffs/"+"githubManySmallSnippets_minLOC5_minFiles90partial_subset";
+	    	String fileName = "arffs/"+"";
 	    	File arffFile1 = new File(fileName+".arff");
 	    	String finalArff = null;
     	    double[] array = new double[2];
@@ -78,11 +79,11 @@ public class AggregateSomeInstancesForLargeFiles {
 				}
 					
 					if(((instanceCounter-1)%setSize) == (setSize-1)){
+						System.out.println("before arr");
 						for(int j=1; j< numFeatures; j++){
-							System.out.println("before arr");
-							Util.writeFile(((array[j-1])/setSize)+",", finalArff, true);	
-							System.out.println("after arr");
+							array[j-1] = (array[j-1])/setSize;	
 							}	
+						Util.writeFile((Arrays.toString(array).replace("[", "")).replace("]", "")+",", finalArff, true);	
 						Util.writeFile(arrayString[arrayString.length-1]+"\n", finalArff, true);
 		        	    array =new double[numFeatures-1];
 		    	    	System.out.println("Wrote instance for author: "+arrayString[arrayString.length-1]);
