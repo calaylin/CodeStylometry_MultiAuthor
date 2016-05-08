@@ -18,6 +18,8 @@ public class AggregateInstances {
 	 * for aggregation: read feature vector except the first and last vector
 	 * add attribute values for merging instances and divide by setSize
 	 * once complete write the aggregate to new arff
+	 * 
+	 * @author Aylin Caliskan-Islam (aylinc@princeton.edu)
 	 * */
 	 public static void main(String[] args) throws Exception, IOException, InterruptedException {
 
