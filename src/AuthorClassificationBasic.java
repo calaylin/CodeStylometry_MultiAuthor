@@ -35,14 +35,15 @@ public class AuthorClassificationBasic {
 		double accuracy=0;
 		int endRelax = 1;
 		int cores=0; //0 for auto detect num cores
-		int numberFolds=2;
-		int numFeatures=1; //0 is the default logM+1
+		int numberFolds=10;
+		int numTrees =50;
+		int numFeatures=0; //0 is the default logM+1
 		int seedNumber=0;;
 		double total =0;
 		double average =0;
 
-		String fileName  ="results.txt";				
-		String arffFile ="arffs/"+"15auths2TFIDF_IGunique_all_balanced.arff";
+		String fileName  ="/home/ubuntu/Desktop/RESULTgithubManySmallSnippets_minLOC3_minFiles150ready_Final.txt";				
+		String arffFile ="/dev/githubManySmallSnippets_minLOC3_minFiles150ready_Final.arff";
 		
 			  Util.writeFile(numberFolds+"FilesPerAuthor: \n",fileName, true);	
 			  for(int relaxPar = 1; relaxPar<=endRelax; relaxPar++){
@@ -55,7 +56,9 @@ public class AuthorClassificationBasic {
  
 		RandomForest cls = new RandomForest();
 		Instances data = new Instances(new FileReader(arffFile));
-		data.delete(1);
+	    System.out.println(data.numAttributes()+"attributes before removing ID");
+		data.deleteAttributeAt(0);
+	    System.out.println(data.numAttributes()+"attributes after removing ID");
 		data.setClassIndex(data.numAttributes() - 1);
 		System.out.println("read data");
 		data.stratify(numberFolds);
@@ -65,7 +68,7 @@ public class AuthorClassificationBasic {
 
 		 
 	     System.out.println("before building classifier");
-		 String[] options = weka.core.Utils.splitOptions("-I 500"+" -num-slots "+cores+" -K "+numFeatures+" -S "+seedNumber);
+		 String[] options = weka.core.Utils.splitOptions("-I "+numTrees+" -num-slots "+cores+" -K "+numFeatures+" -S "+seedNumber);
 			cls.setOptions(options);
 		
 		Evaluation eval=null;				
