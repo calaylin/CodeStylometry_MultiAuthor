@@ -24,7 +24,8 @@ import java.io.FileWriter;
 import java.util.*;
 /*
  * @author Aylin Caliskan-Islam (aylinc@princeton.edu)
- * printing prediction distribution in plaintext works with weka3.7
+ * plaintext prediction distribution works with weka3.7
+ * parallel processing with auto detected number of cores
  * */
 public class AuthorClassificationBasic {
 
@@ -41,7 +42,7 @@ public class AuthorClassificationBasic {
 		double average =0;
 
 		String fileName  ="results.txt";				
-		String arffFile ="arffs/"+".arff";
+		String arffFile ="arffs/"+"15auths2TFIDF_IGunique_all_balanced.arff";
 		
 			  Util.writeFile(numberFolds+"FilesPerAuthor: \n",fileName, true);	
 			  for(int relaxPar = 1; relaxPar<=endRelax; relaxPar++){
@@ -67,15 +68,10 @@ public class AuthorClassificationBasic {
 		 String[] options = weka.core.Utils.splitOptions("-I 500"+" -num-slots "+cores+" -K "+numFeatures+" -S "+seedNumber);
 			cls.setOptions(options);
 		
-		Evaluation eval=null;
-		
-
-
-		
+		Evaluation eval=null;				
 		StringBuffer predictionSB = new StringBuffer();
 		Range attributesToShow = null;
 		Boolean outputDistributions = new Boolean(true);
-
 		PlainText predictionOutput = new PlainText();
 		predictionOutput.setBuffer(predictionSB);
 		predictionOutput.setOutputDistribution(true);
@@ -84,25 +80,25 @@ public class AuthorClassificationBasic {
 		if(endRelax==1)
 		 {eval = new Evaluation(data);}
 		
-		System.out.println(predictionOutput.getBuffer());
-		
-		
+
 		eval.crossValidateModel(cls, data,numberFolds , new Random(seedNumber),predictionOutput, attributesToShow,
 		        outputDistributions);
+		
 		System.out.println(predictionOutput.getBuffer());
-
+		Util.writeFile(predictionOutput.getBuffer().toString(), fileName, true);
 
 	     accuracy=eval.pctCorrect();
 	     total =total+accuracy;
 	     average = total/seedNumber;
 
 		  System.out.println("accuracy is "+eval.pctCorrect());
-		  System.out.println("\nThe accuracy with  is "+eval.pctCorrect()+", relaxed by, "+relaxPar+", \n");
+		  Util.writeFile("accuracy is "+eval.pctCorrect(), fileName, true);
+/*		  System.out.println("\nThe accuracy with  is "+eval.pctCorrect()+", relaxed by, "+relaxPar+", \n");
 		  System.out.println("total is "+total);
 		  System.out.println("avg is "+average);
 		  System.out.println("accuracy is "+accuracy);
 		  System.out.println("\nThe average accuracy with "+numberFolds+"files is "+average+"\n");	
-
+*/
 
 	     }}	
 	}
